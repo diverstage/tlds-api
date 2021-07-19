@@ -1,0 +1,35 @@
+{
+  "name": "tlds-api",
+  "version": "1.0.0",
+  "description": "Top Level Domain API",
+  "main": "index.js",
+  "scripts": {
+    "gulp": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diverstage/tlds-api.git"
+  },
+  "keywords": [
+    "TLD",
+    "Top",
+    "Level",
+    "Domain",
+    "API"
+  ],
+  "author": "Diverstage",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diverstage/tlds-api/issues"
+  },
+  "homepage": "https://github.com/diverstage/tlds-api#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "got": "^11.8.2",
+    "gulp": "^4.0.2",
+    "is-punycode": "^1.0.1",
+    "punycode": "^2.1.1",
+    "write-json-file": "^4.3.0"
+  }
+}
