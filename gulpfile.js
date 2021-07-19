@@ -14,8 +14,8 @@ const update = async () => {
     .map(item => item.toLowerCase())
     .sort();
 
-  await writeJsonFile('docs/api/v1/index.min.json', data, {indent: 0});
-  await writeJsonFile('docs/api/v1/index.json', data, {indent: 2});
+  await writeJsonFile('docs/v1/index.min.json', data, {indent: 0});
+  await writeJsonFile('docs/v1/index.json', data, {indent: 2});
   console.log(`Saved ${data.length} TLDs!`);
 };
 
