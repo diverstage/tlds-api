@@ -5,14 +5,56 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .green {
+      color: green;
+    }
+    .red {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-  <input type="text">
-  <button>判定</button>
+  <input type="text" id="js-input-tld">
+  <button id="js-judge-tld">判定</button>
+  <p id="js-info"></p>
 <script>
-  fetch('https://diverstage.github.io/tlds-api/v1/index.json')
-    .then(response => response.json())
-    .then(tlds => console.log(tlds.data));
+const input = document.getElementById('js-input-tld');
+const judge = document.getElementById('js-judge-tld');
+const info = document.getElementById('js-info');
+let tlds_array = [];
+
+const fetch_tlds = async () => {
+  return await fetch('https://diverstage.github.io/tlds-api/v1/index.json').then(response => response.json()).catch(e => {
+    console.log(e);
+    info.classList.remove('red');
+    info.innerText = 'トップレベルドメインのリストが取得できませんでした';
+  });
+};
+
+fetch_tlds().then((json) => {
+  tlds_array = json.data || [];
+});
+
+const change_info = (check_result) => {
+  if (check_result) {
+    info.classList.remove('red');
+    info.classList.add('green');
+    info.innerText = 'そのトップレベルドメインは存在します';
+  } else {
+    info.classList.remove('green');
+    info.classList.add('red');
+    info.innerText = 'そのトップレベルドメインは存在しません';
+  }
+};
+
+const check_tlds = () => {
+  const result = tlds_array.includes(input.value);
+  change_info(result);
+};
+
+judge.addEventListener('click', check_tlds);
+
 </script>
 </body>
 </html>
